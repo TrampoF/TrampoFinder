@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  gateway_api:
+    container_name: 'gateway_api'
+    build: 
+      context: './BackEnd/Gateway'
+      dockerfile: Dockerfile
+  frontend_react:
+    container_name: 'frontend_react'
+    build: 
+      context: './FrontEnd/React'
+      dockerfile: Dockerfile
