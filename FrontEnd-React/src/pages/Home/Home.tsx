@@ -1,4 +1,4 @@
-import {index} from "../../../api";
+import {index} from "../../api";
 import React, {useState} from "react";
 
 const Home: React.FC = () => {
