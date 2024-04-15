@@ -1,12 +1,33 @@
-version: '3.9'
 services:
-  gateway_api:
-    container_name: 'gateway_api'
-    build: 
-      context: './BackEnd/Gateway'
-      dockerfile: Dockerfile
-  frontend_react:
-    container_name: 'frontend_react'
-    build: 
-      context: './FrontEnd/React'
-      dockerfile: Dockerfile
+  # delivery_api:
+  #   build:
+  #     context: './BackEnd/DeliveryAPI'
+  #     dockerfile: Dockerfile
+
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD}
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+
+  postgresql:
+    image: postgres:16.2-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - ~/.docker-conf/postgresql/data/:/var/lib/postgresql/data/
+      - ~/.docker-conf/postgresql/log/:/var/log/postgresql
+  # frontend_react:
+  #   build: 
+  #     context: './FrontEnd/React'
+  #     dockerfile: Dockerfile
