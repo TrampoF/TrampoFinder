@@ -1,9 +1,9 @@
-import {index} from "../../api";
+import {api} from "../../api/config";
 import React, {useState} from "react";
 
 const Home: React.FC = () => {
     const [users, setUsers] = useState<string>('')
-    index().then(res => {
+    api.get("").then(res => {
         console.log(res)
         setUsers(res.data)
     }).catch(err => {
