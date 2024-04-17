@@ -13,20 +13,57 @@
     width: 70%;
     margin-top: 5rem;
     padding-left: 50px;
-  
+    text-align: left;
+
 
 }
+
 .text {
-    
+
     align-items: center;
     justify-items: center;
     display: flex;
     font-family: 'Outfit', sans-serif;
     font-weight: 600;
-    font-size: 55px;
-    width: 50rem;
-    padding-bottom: 8rem;
+    font-size: 35px;
+    width: 35rem;
 
 }
-.img {
+
+
+
+@media (max-width: 768px) {
+
+    .text {
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        font-family: 'Outfit', sans-serif;
+        font-weight: 600;
+        font-size: 26px;
+        width: 18rem;
+        margin: auto; /* Centraliza horizontalmente */
+       
+    }
+    
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Centraliza verticalmente */
+        align-items: center; /* Centraliza horizontalmente */
+        gap: 1rem;
+        text-align: center;
+    }
+    
+
+    .img {
+        width: 380px;
+        padding-left: 5px;
+      
+       
+
+    }
+
+
+
 }

@@ -18,7 +18,7 @@
 }
 
 .logo {
-    width: 210px;
+    width: 150px;
 }
 
 .navend {
@@ -86,4 +86,8 @@
         border: none;
         padding: 0;
     }
+    .logo {
+        width: 210px;
+    }
+    
 }
