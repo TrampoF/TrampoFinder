@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+.outfit {
+    font-family: "Outfit", sans-serif;
+}
+
+.nav {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    justify-items: flex-end;
+  }
+
+.navend {
+    display: flex;
+    gap: 3rem;
+    justify-items: center;
+    align-items: center;
+    font-size: 23px;
+    font-family: 'Outfit', sans-serif;
+    padding-right: 50px;
+
+    
+    
+}
+.link {
+    text-decoration: none;
+    color: inherit; /* ou qualquer cor desejada */
+    /* outros estilos desejados para os links */
+}
+
+
+
+
+  

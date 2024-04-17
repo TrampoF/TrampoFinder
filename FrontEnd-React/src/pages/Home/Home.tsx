@@ -1,19 +1,20 @@
-import {index} from "../../api";
 import React, {useState} from "react";
+import Layout from "../../layout";
+import styles from './Home.module.css';
 
 const Home: React.FC = () => {
-    const [users, setUsers] = useState<string>('')
-    index().then(res => {
-        console.log(res)
-        setUsers(res.data)
-    }).catch(err => {
-        console.log(err)
-    })
     return (
-        <div>
-            <h1>Home</h1>
-            <p>{users}</p>
-        </div>
+        
+        <Layout>
+            <section className={styles.container}>
+            <div className={styles.img}>
+            <img src="/images/home.svg" alt="Logo" width={520} className={styles.logo} />
+            </div>
+            <div className={styles.text}>
+                <p>Conecte - se as vagas mais atuais do mercado!</p>
+            </div>
+            </section>
+        </Layout>
     );
 };
 
