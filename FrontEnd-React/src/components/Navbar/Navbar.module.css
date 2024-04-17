@@ -1,3 +1,5 @@
+/* Navbar.module.css */
+
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 .outfit {
@@ -8,28 +10,80 @@
     padding: 1rem;
     display: flex;
     justify-content: space-between;
-    justify-items: flex-end;
-  }
+    align-items: center;
+}
+
+.imagem {
+    flex: 1;
+}
+
+.logo {
+    width: 210px;
+}
 
 .navend {
     display: flex;
-    gap: 3rem;
-    justify-items: center;
     align-items: center;
-    font-size: 23px;
-    font-family: 'Outfit', sans-serif;
-    padding-right: 50px;
-
-    
-    
 }
+
+.menuIcon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+.menuItems {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 100px;
+    right: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px blue;
+    padding: 0.5rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s, opacity 0.3s linear;
+    font-family: "Outfit", sans-serif;
+}
+
+.menuItems.open {
+    visibility: visible;
+    opacity: 1;
+}
+
+.linksDesktop {
+    display: none; /* Oculta os links em resoluções menores */
+}
+
 .link {
     text-decoration: none;
-    color: inherit; /* ou qualquer cor desejada */
-    /* outros estilos desejados para os links */
+    color: inherit;
+    margin-bottom: 0.5rem;
 }
 
+/* Mostra os links na versão desktop */
+@media (min-width: 768px) {
+    .linksDesktop {
+        display: flex;
+        font-family: "Outfit", sans-serif;
+        gap: 3rem;
+        font-size: 27px;
+        padding-right: 50px;
+    }
 
+    .menuIcon {
+        display: none;
+    }
 
-
-  
+    .menuItems {
+        position: relative;
+        top: auto;
+        right: auto;
+        box-shadow: none;
+        border: none;
+        padding: 0;
+    }
+}
