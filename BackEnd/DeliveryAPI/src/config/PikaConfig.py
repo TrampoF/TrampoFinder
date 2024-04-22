@@ -4,7 +4,7 @@ import pika
 from pika.adapters.blocking_connection import BlockingChannel
 from pika.credentials import PlainCredentials
 
-from src.settings.RabbitMQSettings import RabbitMQSettings
+from src.config.settings import RabbitMQSettings
 
 
 class PikaConfig:

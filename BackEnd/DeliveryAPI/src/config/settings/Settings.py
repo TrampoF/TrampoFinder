@@ -1,9 +1,9 @@
 from pydantic import BaseModel
 
-from src.settings.AppSettings import AppSettings
-from src.settings.DatabaseSettings import DatabaseSettings
-from src.settings.RabbitMQSettings import RabbitMQSettings
-from src.settings.SwaggerSettings import SwaggerSettings
+from src.config.settings.AppSettings import AppSettings
+from src.config.settings.DatabaseSettings import DatabaseSettings
+from src.config.settings.RabbitMQSettings import RabbitMQSettings
+from src.config.settings.SwaggerSettings import SwaggerSettings
 
 
 class Settings(BaseModel):

@@ -1,11 +1,10 @@
-import sys
 from functools import lru_cache
 from typing import Annotated
 
 import uvicorn
 from fastapi import FastAPI, Depends
 
-from src.settings.Settings import Settings
+from src.config.settings import Settings
 
 
 @lru_cache

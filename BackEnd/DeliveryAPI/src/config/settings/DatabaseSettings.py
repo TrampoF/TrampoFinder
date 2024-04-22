@@ -1,6 +1,6 @@
 from pydantic import SecretStr
 
-from src.settings.GlobalSettings import GlobalSettings
+from src.config.settings.GlobalSettings import GlobalSettings
 
 
 class DatabaseSettings(GlobalSettings):
