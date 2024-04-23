@@ -4,7 +4,7 @@ const LandingPage: React.FC = () => {
 
     return (
         <>
-            <h3>Landing Page</h3>
+            <h3>Dashboard page</h3>
         </>
     )
 }
