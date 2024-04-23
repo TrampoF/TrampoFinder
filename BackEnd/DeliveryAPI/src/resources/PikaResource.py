@@ -1,4 +1,4 @@
-from src.config.PikaConfig import PikaConfig
+from src.configs.PikaConfig import PikaConfig
 
 
 class PikaService:

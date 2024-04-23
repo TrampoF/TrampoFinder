@@ -4,7 +4,7 @@ from typing import Annotated
 import uvicorn
 from fastapi import FastAPI, Depends
 
-from src.config.settings import Settings
+from src.configs.settings import Settings
 
 
 @lru_cache
