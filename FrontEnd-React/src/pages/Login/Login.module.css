@@ -1,0 +1,61 @@
+.container {
+    padding: 20px;
+    margin-left: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+}
+
+.teste {
+    font-family: "Outfit", sans-serif;
+    z-index: 1000;
+    color: red;
+    width: 900px;
+}
+
+.body {
+    font-family: "Outfit", sans-serif;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.button {
+    margin-top: 2rem;
+    padding: 7px 50px;
+    background-color: #3A5BA9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 25px;
+    font-family: "Outfit", sans-serif;
+}
+
+@media (max-width: 600px) {
+    .teste {
+        width: 100%; /* Ajuste o tamanho do campo de entrada para telas menores */
+    }
+
+    
+
+    .buttonContainer {
+        margin-top: 1rem; /* Reduza o espaçamento entre o botão e o campo de entrada */
+    }
+
+    .button {
+        padding: 7px 30px; /* Reduza o padding do botão para dispositivos móveis */
+        font-size: 20px; /* Reduza o tamanho da fonte do botão para dispositivos móveis */
+    }
+}
