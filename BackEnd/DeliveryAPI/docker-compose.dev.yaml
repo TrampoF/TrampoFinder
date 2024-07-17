@@ -1,0 +1,7 @@
+services:
+  watcher:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ".:/home/app"
