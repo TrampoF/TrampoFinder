@@ -1,17 +1,13 @@
-import functools
+import os
+import pydantic_settings
 
-import pydantic
-
-import TelethonSettings
-
-
-class Settings(pydantic.BaseModel):
-    telethon_settings: TelethonSettings = TelethonSettings.TelethonSettings()
+from configs.settings.TelethonSettings import TelethonSettings
 
 
-@functools.lru_cache
-def get_settings(env: pydantic.Optional[str] = None) -> Settings:
-    if env is None:
-        return Settings()
-
-    return Settings(_env_file=f".env.{env}")
+class Settings(pydantic_settings.BaseSettings):
+    model_config = pydantic_settings.SettingsConfigDict(
+        env_file=os.path.join(os.path.dirname(__file__), "..", "..", "..",".env"),
+        env_file_encoding="utf-8",
+        env_nested_delimiter="__"
+    )
+    telethon: TelethonSettings
