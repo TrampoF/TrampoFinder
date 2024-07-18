@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const SelectedItem = styled.div`
+const SelectedButton = styled.div`
     cursor: pointer;
     user-select: none;
     padding: 4px 8px;
@@ -11,22 +11,22 @@ const SelectedItem = styled.div`
     border-radius: 8px;
 `;
 
-const DefaultItem = styled(SelectedItem)`
+const DefaultButton = styled(SelectedButton)`
     background-color: var(--tertiary-color);
     color: var(--on-tertiary-color);
 `
 
-interface ItemProps {
+interface ButtonProps {
     name: string
 }
 
-const Item: React.FC<ItemProps> = ({ name }) => {
+const Button: React.FC<ButtonProps> = ({ name }) => {
     const [isSelected, setIsSelected] = useState(false);
 
     const handleClick = (): void => setIsSelected(!isSelected);
 
-    return isSelected ? <DefaultItem onClick={handleClick}>{name}</DefaultItem>
-        : <SelectedItem onClick={handleClick}>{name}</SelectedItem>;
+    return isSelected ? <DefaultButton onClick={handleClick}>{name}</DefaultButton>
+        : <SelectedButton onClick={handleClick}>{name}</SelectedButton>;
 }
 
-export default Item;
+export default Button;

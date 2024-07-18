@@ -34,6 +34,8 @@
     --font-medium3: 24px;
     --font-large: 28px;
     --font-xlarge: 42px;
+
+    font-family: 'Outfit';
 }
 
 .prevent-select {

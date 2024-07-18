@@ -11,9 +11,9 @@ const MenuContainer = styled.div`
 
 const JobsContainer = styled.div`
     display: grid;
-    gap: 4px;
+    gap: 6px;
     grid-template-columns: 1fr 1fr;
-    margin-top: 4px;
+    margin-top: 12px;
 `
 
 interface DashboardVerticalMenuProps {

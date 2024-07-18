@@ -5,7 +5,7 @@ const Home: React.FC = () => {
 
     return (
         <div>
-            <p>Home</p>
+            <h1>Home</h1>
         </div>
     );
 };
