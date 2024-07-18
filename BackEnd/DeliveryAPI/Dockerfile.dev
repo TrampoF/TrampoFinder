@@ -3,10 +3,7 @@ FROM python:3.11.0
 WORKDIR /home/app
 
 COPY pyproject.toml .
-COPY pyproject.lock .
 
 RUN pip install poetry && poetry install --only main
-
-COPY src/ ./src
 
 ENTRYPOINT [ "tail", "-f", "/dev/null" ]
