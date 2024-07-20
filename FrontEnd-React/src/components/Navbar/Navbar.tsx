@@ -1,5 +1,5 @@
 // Navbar.tsx
-
+import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import styles from './Navbar.module.css';
 import { GiHamburgerMenu } from 'react-icons/gi';
@@ -14,7 +14,10 @@ const Navbar: React.FC = () => {
     return (
         <nav className={styles.nav}>
             <div className={styles.imagem}>
+              <a href='/'>
                 <img src="/images/trampofinder.svg" alt="Logo" className={styles.logo} />
+                </a>
+              
             </div>
             <div className={styles.navend}>
                 <div className={styles.menuIcon} onClick={toggleMenu}>

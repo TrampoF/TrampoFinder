@@ -1,7 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
+.callToAction {
+    display: inline-block;
+    padding: 15px 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 25px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.callToAction:hover {
+    background-color: #093360;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
 .outfit {
     font-family: "Outfit", sans-serif;
+}
+.link {
+    text-decoration: none;
+    color: inherit; /* ou qualquer cor desejada */
+    /* outros estilos desejados para os links */
 }
 
 .container {

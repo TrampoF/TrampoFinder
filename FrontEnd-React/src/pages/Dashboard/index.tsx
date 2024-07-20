@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-
-import Layout from "../../layout";
 import DashboardVerticalMenu from "../../components/DashboardVerticalMenu";
 import SearchMenu from "../../components/SearchMenu";
+import LayoutDash from "../../layoutdash";
 
 const jobs: Array<string> = ["Django", "React", "Nest.js", "FastAPI", "React Native"];
 
@@ -18,7 +17,7 @@ const AppContent = styled.div`
 const Dashboard: React.FC = () => {
 
     return (
-        <Layout>
+        <LayoutDash>
             <DashboardContainer>
                 <DashboardVerticalMenu jobs={jobs}/>
                 <AppContent>
@@ -26,7 +25,7 @@ const Dashboard: React.FC = () => {
                     <p>Dashboard page</p>
                 </AppContent>
             </DashboardContainer>
-        </Layout>
+        </LayoutDash>
     )
 }
 

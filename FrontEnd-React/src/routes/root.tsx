@@ -1,51 +1,56 @@
-import {createBrowserRouter} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import About from "../pages/About";
 import Home from "../pages/Home";
 import Dashboard from "../pages/Dashboard";
 import Register from "../pages/Register";
-import Login from "../pages/Login";
 import RecoverAccount from "../pages/RecoverAccount";
 import ChangePassword from "../pages/ChangePassword";
 import Cadastro from "../pages/Cadastro/Cadastro.tsx";
+import Login from "../pages/Login/Login.tsx";
+import AppPage from "../pages/AppPage/index.tsx";
 
 
 
 const router = createBrowserRouter([
     {
+        path: "/aplicativos",
+        element: <AppPage/>
+    },
+    {
         path: "",
-        element: <Home/>
+        element: <Home />
     },
     {
         path: "/app",
-        element: <Dashboard/>
+        element: <Dashboard />
     },
     {
         path: "/about",
-        element: <About/>
+        element: <About />
     },
     {
 
         path: "/register",
-        element: <Register/>
+        element: <Register />
     },
     {
         path: "/login",
-        element: <Login/>
+        element: <Login />
     },
     {
         path: "/recover",
-        element: <RecoverAccount/>
+        element: <RecoverAccount />
     },
     {
         path: "/recover/changePassword",
-        element: <ChangePassword/>
+        element: <ChangePassword />
     },
     {
 
         path: "/cadastro",
-        element: <Cadastro/>
+        element: <Cadastro />
 
-    }
+    },
 ])
 
 export default router

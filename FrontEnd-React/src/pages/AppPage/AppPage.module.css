@@ -1,0 +1,79 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.container_card {
+    display: flex;
+    justify-content: center;
+    gap: 50px; /* Adds space between the cards */
+    margin-top: 20px; /* Adds some margin on top */
+}
+
+.card {
+    border: 2px solid var(--tertiary-color);
+    border-radius: 25px;
+    padding: 20px; /* Adds padding inside the card */
+    width: 300px; /* Adjust the width as needed */
+    padding-bottom: 50px;
+    text-align: left; /* Align text to the left inside the card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out the contents vertically */
+    position: relative; /* Position the button absolutely within the card */
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Adds space below the flex container */
+}
+
+.img {
+    margin-right: 10px; /* Adds space between the image and the title */
+}
+
+button {
+    position: absolute;
+    bottom: 20px; /* Positions the button 20px from the bottom */
+    right: 20px; /* Positions the button 20px from the right */
+    background-color: #3b5998; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    border-radius: 15px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for the button */
+    font-size: 16px; /* Font size for the button text */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+button:hover {
+    background-color: #365492; /* Slightly darker shade for hover */
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 40px; /* Adds space between the description and the button */
+}
+
+.container_heading {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 20px; /* Adjust margin as needed to align with the card */
+    padding-left: 1150px;
+}
+
+.heading {
+    text-align: left;
+}
+
+.titulo { 
+    font-size: 27px;
+    margin-bottom: 50px;
+}
