@@ -23,7 +23,6 @@ const Dashboard: React.FC = () => {
                 <DashboardVerticalMenu jobs={jobs}/>
                 <AppContent>
                     <SearchMenu />
-                    
                     <p>Dashboard page</p>
                 </AppContent>
             </DashboardContainer>

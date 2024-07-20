@@ -6,6 +6,9 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import RecoverAccount from "../pages/RecoverAccount";
 import ChangePassword from "../pages/ChangePassword";
+import Cadastro from "../pages/Cadastro/Cadastro.tsx";
+
+
 
 const router = createBrowserRouter([
     {
@@ -21,6 +24,7 @@ const router = createBrowserRouter([
         element: <About/>
     },
     {
+
         path: "/register",
         element: <Register/>
     },
@@ -35,6 +39,12 @@ const router = createBrowserRouter([
     {
         path: "/recover/changePassword",
         element: <ChangePassword/>
+    },
+    {
+
+        path: "/cadastro",
+        element: <Cadastro/>
+
     }
 ])
 
