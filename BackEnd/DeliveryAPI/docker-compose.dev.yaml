@@ -1,5 +1,5 @@
 services:
-  watcher:
+  delivery_api:
     build:
       context: .
       dockerfile: Dockerfile.dev
