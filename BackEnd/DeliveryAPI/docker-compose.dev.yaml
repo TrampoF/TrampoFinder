@@ -4,4 +4,4 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     volumes:
-      - ".:/home/app"
+      - ".:/home/nonroot/app"

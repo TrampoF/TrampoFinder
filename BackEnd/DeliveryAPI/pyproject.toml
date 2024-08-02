@@ -5,6 +5,9 @@ description = ""
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"
 
+[tool.poetry.scripts]
+dev = "deliveryapi.main:main"
+
 [tool.poetry.dependencies]
 python = "^3.11"
 pydantic-settings = "^2.2.1"

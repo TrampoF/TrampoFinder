@@ -1,5 +1,3 @@
-
-
 import pydantic_settings
 
 

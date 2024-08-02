@@ -1,9 +1,16 @@
 FROM python:3.11.0
 
-WORKDIR /home/app
+ARG USERNAME=nonroot
+RUN groupadd --gid 1000 $USERNAME && \
+    useradd --uid 1000 --gid 1000 -m $USERNAME
+ENV PATH="/home/${USERNAME}/.local/bin:${PATH}"
+
+USER $USERNAME
+
+WORKDIR /home/nonroot/app
 
 COPY pyproject.toml .
 
-RUN pip install poetry && poetry install --only main
+RUN pip install poetry
 
 ENTRYPOINT [ "tail", "-f", "/dev/null" ]
