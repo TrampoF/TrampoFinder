@@ -1,0 +1,10 @@
+services:
+  web_app:
+    container_name: trampof_web_app
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/home/node/app
+    ports:
+      - "3000:3000"
