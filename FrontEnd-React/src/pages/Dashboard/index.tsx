@@ -1,0 +1,32 @@
+import React from "react";
+import styled from "styled-components";
+import DashboardVerticalMenu from "../../components/DashboardVerticalMenu";
+import SearchMenu from "../../components/SearchMenu";
+import LayoutDash from "../../layoutdash";
+
+const jobs: Array<string> = ["Django", "React", "Nest.js", "FastAPI", "React Native"];
+
+const DashboardContainer = styled.div`
+    display: grid;
+    grid-template-columns: 0fr 1fr;
+`
+const AppContent = styled.div`
+    height: 100vh;
+`
+
+const Dashboard: React.FC = () => {
+
+    return (
+        <LayoutDash>
+            <DashboardContainer>
+                <DashboardVerticalMenu jobs={jobs}/>
+                <AppContent>
+                    <SearchMenu />
+                    <p>Dashboard page</p>
+                </AppContent>
+            </DashboardContainer>
+        </LayoutDash>
+    )
+}
+
+export default Dashboard;

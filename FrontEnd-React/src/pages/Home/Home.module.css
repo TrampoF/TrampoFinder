@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+.callToAction {
+    display: inline-block;
+    padding: 15px 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 25px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.callToAction:hover {
+    background-color: #093360;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+.outfit {
+    font-family: "Outfit", sans-serif;
+}
+.link {
+    text-decoration: none;
+    color: inherit; /* ou qualquer cor desejada */
+    /* outros estilos desejados para os links */
+}
+
+.container {
+    display: flex;
+    gap: 5rem;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    width: 70%;
+    margin-top: 5rem;
+    padding-left: 50px;
+    text-align: left;
+
+
+}
+
+.text {
+
+    align-items: center;
+    justify-items: center;
+    display: flex;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 35px;
+    width: 35rem;
+
+}
+
+
+
+@media (max-width: 768px) {
+
+    .text {
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        font-family: 'Outfit', sans-serif;
+        font-weight: 600;
+        font-size: 26px;
+        width: 18rem;
+        margin: auto; /* Centraliza horizontalmente */
+       
+    }
+    
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Centraliza verticalmente */
+        align-items: center; /* Centraliza horizontalmente */
+        gap: 1rem;
+        text-align: center;
+    }
+    
+
+    .img {
+        width: 380px;
+        padding-left: 5px;
+      
+       
+
+    }
+
+
+
+}
