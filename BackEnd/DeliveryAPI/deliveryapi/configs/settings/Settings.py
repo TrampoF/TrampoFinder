@@ -2,6 +2,7 @@ import os
 import pydantic_settings
 
 from deliveryapi.configs.settings.TelethonSettings import TelethonSettings
+from deliveryapi.configs.settings.TokenSettings import TokenSettings
 
 
 class Settings(pydantic_settings.BaseSettings):
@@ -11,3 +12,4 @@ class Settings(pydantic_settings.BaseSettings):
         env_nested_delimiter="__",
     )
     telethon: TelethonSettings
+    token: TokenSettings
