@@ -1,14 +1,12 @@
 from typing import Any
 from joserfc import jwt, jwe, jwk
-import os
+from ..configs.settings.TokenSettings import TokenSettings
 
-SIGN_ALGORITHM = "RS256"
-ENCRYPTION_ALGORITHM = "ECDH-ES"
-CEK_ENCRYPTION_ALGORITHM = "A128GCM"
+token_settings = TokenSettings() 
+SIGN_ALGORITHM = token_settings.sign_algorithm
+ENCRYPTION_ALGORITHM = token_settings.encryption_algorithm
+CEK_ENCRYPTION_ALGORITHM = token_settings.cek_encryption_algorithm
 
-# Cada user_id tera duas chaves: uma publica para verificacao de tokens assinados e uma privada para decriptar o token
-jwk.ECKey
-jwk.RSAKey
 class TokenGenerator:
     '''The token generator object, which contains ``main_claims`` and ``main_claim_value``.
 

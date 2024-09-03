@@ -1,26 +1,34 @@
-from json_token.token_generator import TokenGenerator
-from json_token.token_decoder import TokenDecoder
+from ..json_token.token_generator import TokenGenerator
+from ..json_token.token_decoder import TokenDecoder
 import base64
 import json
 from fastapi import HTTPException
 from joserfc import errors, jwk, jwt
+from ..configs.settings.TokenSettings import TokenSettings
 
-private_key_file = open("./id_rsa", "r") 
+token_settings = TokenSettings() 
+SIGN_ALGORITHM = token_settings.sign_algorithm
+ENCRYPTION_ALGORITHM = token_settings.encryption_algorithm
+CEK_ENCRYPTION_ALGORITHM = token_settings.cek_encryption_algorithm 
+
+test_keys_root = "test_keys"
+private_key_file = open(f"./{test_keys_root}/private-key.pem", "r") 
 pem_data = private_key_file.read() 
 rsa_private_key = jwk.RSAKey.import_key(pem_data)
 private_key_file.close() 
 
-public_key_file = open("./id_rsa.pub", "r") 
+public_key_file = open(f"./{test_keys_root}/public-key.pem", "r") 
 pem_data = public_key_file.read() 
 rsa_pub_key = jwk.RSAKey.import_key(pem_data)
 public_key_file.close()
 
-private_key_file_EC = open("./ec-p256-private.pem", "r" )
+
+private_key_file_EC = open(f"./{test_keys_root}/ec-p256-private.pem", "r" )
 pem_data = private_key_file_EC.read()
 ec_private_key = jwk.ECKey.import_key(pem_data) 
 private_key_file_EC.close() 
 
-public_key_file_EC = open("./ec-p256-public.pem", "r" )
+public_key_file_EC = open(f"./{test_keys_root}/ec-p256-public.pem", "r" )
 pem_data = public_key_file_EC.read()
 ec_public_key = jwk.ECKey.import_key(pem_data)
 public_key_file_EC.close()
@@ -109,7 +117,7 @@ def test_encryption():
     try: 
         plaintext = "information"
         token_gen = TokenGenerator("user_id", 12345)
-        encrypted_token = token_gen.generate_encrypted_token(plaintext, ec_public_key, ENCRYPTION_ALGORITHM, CEK_ENCRPYTION_ALGORITHM)
+        encrypted_token = token_gen.generate_encrypted_token(plaintext, ec_public_key, ENCRYPTION_ALGORITHM, CEK_ENCRYPTION_ALGORITHM)
         token_decoder = TokenDecoder("user_id") # in this case, the main_claim does not matter
         decrypted_token = token_decoder.decrypt_token(encrypted_token, ec_private_key)
 
@@ -169,8 +177,9 @@ def test_nested_token():
 
 
 
+def json_token_tests(): 
+    test_alg_change_none()
+    test_main_claim_essentiality()
+    test_encryption()
+    test_nested_token()
 
-test_alg_change_none()
-test_main_claim_essentiality()
-test_encryption()
-test_nested_token()

@@ -1,8 +1,10 @@
 from typing import Any
 from fastapi import HTTPException, status
 from joserfc import jwt, jwe, errors
+from ..configs.settings.TokenSettings import TokenSettings
 
-SIGN_ALGORITHM = "RS256"
+token_settings = TokenSettings() 
+SIGN_ALGORITHM = token_settings.sign_algorithm
 
 class TokenDecoder:
     '''The token decoder object, which contains ``main_claims``.
