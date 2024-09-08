@@ -1,6 +1,8 @@
 from typing import Any
-from joserfc import jwt, jwe, jwk
+from joserfc import jwt, jwe, jwk, util
 from ..configs.settings.TokenSettings import TokenSettings
+from datetime import datetime
+import jwe_payload
 
 token_settings = TokenSettings() 
 SIGN_ALGORITHM = token_settings.sign_algorithm
@@ -17,21 +19,24 @@ class TokenGenerator:
         self.main_claim = main_claim 
         self.main_claim_value = main_claim_value 
 
-    def generate_nested_token(self, user_id: int, signing_key: str, encryption_public_key: str, 
-                              sign_algorithm: str = SIGN_ALGORITHM, encryption_algorithm: str = ENCRYPTION_ALGORITHM, cek_encryption_algorithm: str = CEK_ENCRYPTION_ALGORITHM) -> str: 
-        signed_token = self.generate_signed_token(user_id, signing_key, sign_algorithm) 
-        encrypted_token = self.generate_encrypted_token(signed_token, encryption_public_key, encryption_algorithm, cek_encryption_algorithm)
+    def generate_nested_token(self, user_id: int, encryption_public_key: str
+                                , encryption_algorithm: str = ENCRYPTION_ALGORITHM, cek_encryption_algorithm: str = CEK_ENCRYPTION_ALGORITHM) -> str: 
+        plain_text = self.generate_plain_text(user_id) 
+        encrypted_token = self.generate_encrypted_token(plain_text, encryption_public_key, encryption_algorithm, cek_encryption_algorithm)
         return encrypted_token 
 
-    def generate_signed_token(self, user_id: int, signing_key: str, sign_algorithm: str) -> str: 
+    def generate_plain_text(self, user_id: int, signing_key: str|None = None, sign_algorithm: str|None = None) -> str: 
         header = {
-            "alg": sign_algorithm, 
+            "iat": str(datetime.now())
         }
         claims = {
             self.main_claim: self.main_claim_value, 
-            "sub": user_id 
         }
-        return jwt.encode(header, claims, signing_key, sign_algorithm) 
+
+        jwe_payload_obj = jwe_payload.JwePayload.from_dict_token(header, claims) 
+        str_plain_text = jwe_payload_obj.get_unsigned_jwt_dumped()
+
+        return str_plain_text 
 
     def generate_encrypted_token(self, payload: str, encrypting_public_key: str, encryption_algorithm: str, cek_encryption_algorithm: str) -> str:
         protected_header = {

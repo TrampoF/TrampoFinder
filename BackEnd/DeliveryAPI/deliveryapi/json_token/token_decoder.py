@@ -1,7 +1,9 @@
 from typing import Any
 from fastapi import HTTPException, status
-from joserfc import jwt, jwe, errors
+from joserfc import jwt, jwe, errors, util
 from ..configs.settings.TokenSettings import TokenSettings
+from ast import literal_eval
+import jwe_payload
 
 token_settings = TokenSettings() 
 SIGN_ALGORITHM = token_settings.sign_algorithm
@@ -14,31 +16,24 @@ class TokenDecoder:
     def __init__(self, main_claim: str): 
         self.main_claim = main_claim 
     
-    def decode_nested_token(self, token: str, signing_key: str, encryption_private_key: str, sign_algorithm: str = SIGN_ALGORITHM) -> Any: 
+    def decode_nested_token(self, token: str, encryption_private_key: str) -> Any: 
         try: 
             decrypted_token = self.decrypt_token(token, encryption_private_key) 
-            verified_token_claims = self.verify_signed_token(decrypted_token.plaintext, signing_key, sign_algorithm) 
+            verified_token_claims = self.verify_signed_token(decrypted_token.plaintext) 
             claim_value = verified_token_claims.get(self.main_claim, None)  
             return claim_value
         
         except (errors.BadSignatureError, errors.InvalidKeyTypeError, errors.MissingClaimError, errors.InvalidPayloadError, ValueError, errors.DecodeError) as e: 
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
         except Exception as e: 
-            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Unknown exception")        
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"Unknown exception: {e}")        
     
-    def verify_signed_token(self, signed_token: str, key: str, sign_algorithm: str) -> dict: 
+    def verify_signed_token(self, signed_token_bytes: bytes) -> dict: 
+        jwe_payload.JwePayload.from_bytes_token(signed_token_bytes) 
+        decoded_token:dict = literal_eval(signed_token_bytes.decode("utf-8"))
+        essential_claims = [self.main_claim, ]
 
-         # TODO: claim obrigatoria: aud = {"essential": True, value: "example.com/token"},  # the url ?? iss= {}, # seria a url do servidor de "autenticacao"?
-        claims_request = jwt.JWTClaimsRegistry(
-            sub={"essential": True},
-            **{self.main_claim: {"essential": True}}
-        )
-        try: 
-            decoded_token = jwt.decode(signed_token, key, sign_algorithm)
-            claims_request.validate(decoded_token.claims) 
-            return decoded_token.claims
-        except (errors.BadSignatureError, errors.MissingClaimError, ValueError, errors.InvalidKeyTypeError):
-            raise 
+        return decoded_token.get("claims")
 
     def decrypt_token(self, token: str, private_key: str) -> Any: 
         try: 
